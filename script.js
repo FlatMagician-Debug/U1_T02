@@ -7,9 +7,7 @@ fileInput.addEventListener('change', () => {
     const reader = new FileReader();
     reader.onload = (e) => {
       try {
-        // Intentar parsear para asegurar que es JSON válido
         const jsonData = JSON.parse(e.target.result);
-        // Mostrar el JSON con indentación
         output.textContent = JSON.stringify(jsonData, null, 2);
       } catch (err) {
         output.textContent = "Error: El archivo no es un JSON válido.";
