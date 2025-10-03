@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1, initial-scale=1.0">
+    <title>Cargar txt y json</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif; margin: 2rem;
+        }
+        #out{
+            white-space: pre-wrap; border: 1px solid #f3a0a0; padding: 1rem; border-radius: .5rem;
+        }
+        pre{
+            background-color: black;
+            color: rgb(154, 4, 192);
+        }
+    </style>
+</head>
+<body>
+    <h1>Cargar el archivo de texto</h1>
+    <input id="file" type="file" accept=".txt, text/plain, .json">
+    <button id="show" type="button">Mostrar</button>
+ 
+    <h2>Contenido</h2>
+    <pre id="out">-aún no hay contenido-</pre>
+ 
+    <script>
+        const input = document.getElementById('file');
+        const out = document.getElementById('out');
+ 
+        document.getElementById('show').addEventListener('click', async () =>{
+            const f = input.files?.[0];
+            if (!f) { out.textContent = 'Primero elige un archivo .txt o.Json'; return;}
+            const text = await f.text();
+            out.textContent = text;
+        });
+    </script>
+</body>
+</html>
